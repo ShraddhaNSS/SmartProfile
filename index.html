@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SmartProfile — AI Resume Summary Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main class="container" role="main" aria-labelledby="app-title">
+
+  <header>
+    <h1 id="app-title">SmartProfile</h1>
+    <p class="subtitle">AI-Powered Resume Summary Generator</p>
+  </header>
+
+  <!-- AUTH FORM -->
+  <section id="authContainer" class="auth-container">
+    <input type="text" id="name" placeholder="Name" maxlength="50">
+    <input type="email" id="email" placeholder="Email" maxlength="100">
+    <input type="password" id="password" placeholder="Password" maxlength="50">
+    <button id="signupBtn">Sign Up</button>
+    <button id="loginBtn">Log In</button>
+  </section>
+
+  <!-- RESUME GENERATOR -->
+  <section id="generatorContainer" class="hidden">
+    <section class="controls" aria-label="Options">
+      <div class="field">
+        <label for="role">Target role (optional)</label>
+        <input id="role" type="text" placeholder="e.g. Frontend Engineer, Data Analyst" maxlength="80" />
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="tone">Tone</label>
+          <select id="tone">
+            <option value="professional" selected>Professional</option>
+            <option value="impactful">Impactful</option>
+            <option value="leadership">Leadership-focused</option>
+            <option value="concise">Concise</option>
+            <option value="friendly">Friendly</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="experience">Experience level</label>
+          <select id="experience">
+            <option value="student" selected>Student / Fresher</option>
+            <option value="junior">Junior</option>
+            <option value="mid">Mid-level</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="length">Length</label>
+          <select id="length">
+            <option value="3">3 sentences</option>
+            <option value="4" selected>4 sentences</option>
+            <option value="5">5 sentences</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="input-area">
+      <label for="skills">Your skills & achievements</label>
+      <textarea id="skills" placeholder="e.g., JavaScript, React, TypeScript, REST APIs…" maxlength="500"></textarea>
+      <div class="hint-row">
+        <small id="charCount">0</small>/500
+        <small class="hint">Tip: include tools, wins, metrics, and domains.</small>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="generateBtn">✨ Generate Summary</button>
+      <button id="clearBtn" class="ghost">Clear</button>
+    </section>
+
+    <p id="loading" class="hidden">⏳ Generating your summary…</p>
+
+    <section id="resultContainer" class="hidden">
+      <h2>Your Resume Summary</h2>
+      <div id="result" tabindex="0"></div>
+      <div class="result-actions">
+        <button id="copyBtn">Copy to Clipboard</button>
+        <button id="regenerateBtn" class="ghost">Regenerate</button>
+      </div>
+    </section>
+  </section>
+
+  <footer class="footer">
+    <span>SmartProfile · v2</span>
+    <button id="themeToggle" class="link" aria-label="Toggle theme">🌙 Dark</button>
+  </footer>
+
+</main>
+
+<div id="toast" class="toast hidden"></div>
+<script src="./script.js" defer></script>
+</body>
+</html>
